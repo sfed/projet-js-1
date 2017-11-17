@@ -1,44 +1,48 @@
 div {
-	
-	padding: 8px;
-	margin: 8px;
-	border :solid 1px;
-	border-color:black;
-	
-	
-	}
-	table {
-		border-radius: 25px;
-		background: white;
-		padding: 10px;
-		width: 200px;
-		height: 150px; 
-	}
+    padding: 8px;
+    margin: 8px;
+    border: solid 1px;
+    border-color: black;
+}
 
-	td {
-	border-radius: 100px;
-	background-color: red;
-	padding: 4px;
-	text-align : center;
-	}
+table {
+    border-radius: 25px;
+    background: white;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+}
 
-	td:hover {
-	background-color:white;
-	cursor :pointer;
-	}
+td {
+    border-radius: 100px;
+    background-color: red;
+    padding: 4px;
+    text-align: center;
+}
 
-	td.checked {
-	background-color:blue;
-	cursor : default;
-	color:red;
-	}
+td:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+td.checked {
+    background-color: blue;
+    cursor: default;
+    color: red;
+}
+
+#addButtonId {}
+
+.confirm {
+    visibility: hidden
+}
+
+ul {
+    list-style-type: none;
+}
 
 
-	ul {
-	list-style-type : none;
-	}
-	
-	/* 
+/* 
 	li {
 	liste-style: none;
 	float : left;
@@ -51,27 +55,26 @@ div {
 	color:blue;
 
 	}  */
-	
-	.confirmBtn {
-	visibility:hidden;
-	
-	}
-	span#confirm {
-	 padding: 10px;
-	  
-	  background:green;
-	  float : left;
-	border-radius: 100px;
-	border-style : solid;
-	border-color:red;
-	padding: 4px;
-	margin-right :4px;
-	text-align : center;
-	color:blue;
-	  cursor: pointer;
-	  transition: 0.3s;
-	
-	}
-	#confirm:hover {
-	background-color: #bbb;
-	}
+
+.confirmBtn {
+    visibility: hidden;
+}
+
+span#confirm {
+    padding: 10px;
+    background: green;
+    float: left;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: red;
+    padding: 4px;
+    margin-right: 4px;
+    text-align: center;
+    color: blue;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#confirm:hover {
+    background-color: #bbb;
+}
