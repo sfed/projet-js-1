@@ -1,80 +1,120 @@
-div {
-    padding: 8px;
-    margin: 8px;
-    border: solid 1px;
-    border-color: black;
-}
-
-table {
-    border-radius: 25px;
-    background: white;
-    padding: 10px;
-    width: 200px;
-    height: 150px;
-}
-
-td {
-    border-radius: 100px;
-    background-color: red;
-    padding: 4px;
-    text-align: center;
-}
-
-td:hover {
-    background-color: white;
-    cursor: pointer;
-}
-
-td.checked {
-    background-color: blue;
-    cursor: default;
-    color: red;
-}
-
-#addButtonId {}
-
-.confirm {
-    visibility: hidden
-}
-
-ul {
-    list-style-type: none;
-}
-
-
-/* 
-	li {
-	liste-style: none;
-	float : left;
-	border-radius: 100px;
-	border-style : solid;
-	border-color:red;
-	background-color: white;
-	padding: 4px;
-	text-align : center;
-	color:blue;
-
-	}  */
-
-.confirmBtn {
-    visibility: hidden;
-}
-
-span#confirm {
-    padding: 10px;
-    background: green;
-    float: left;
-    border-radius: 100px;
-    border-style: solid;
-    border-color: red;
-    padding: 4px;
-    margin-right: 4px;
-    text-align: center;
-    color: blue;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#confirm:hover {
-    background-color: #bbb;
-}
+    div {
+        padding: 10px;
+        margin: 4px;
+        border: solid 1px;
+        border-color: black;
+    }
+    
+    table {
+        border-radius: 25px;
+        background: white;
+        padding: 10px;
+        width: 200px;
+        height: 150px;
+    }
+    
+    td {
+        border-radius: 100px;
+        background-color: red;
+        padding: 6px;
+        text-align: center;
+    }
+    
+    td:hover {
+        background-color: white;
+        cursor: pointer;
+    }
+    
+    td.checked {
+        background-color: blue;
+        cursor: default;
+        color: red;
+    }
+    
+    #addButtonId {
+        margin: 15px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .confirm {
+        /* visibility: hidden */
+        cursor: not-allowed;
+        pointer-events: none;
+        /*Button disabled - CSS color class*/
+        color: #c0c0c0;
+        background-color: #ffffff;
+    }
+    
+    #confirm:hover {
+        background-color: #bbb;
+    }
+    
+    #generateId {
+        margin: 15px;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 15px;
+        font
+    }
+    
+    #playButtonId {
+        margin: 15px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    .affiche {
+        display: inline cursor: not-allowed;
+        pointer-events: none;
+        /*Button disabled - CSS color class*/
+        color: #c0c0c0;
+        background-color: #ffffff;
+    }
+    
+    #resetButtonId {
+        margin: 15px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    
+    ul {
+        list-style-type: none;
+    }
+    
+    li {
+        /* list-style: none; */
+        float: left;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: red;
+        background-color: white;
+        padding: 4px;
+        margin: 4px;
+        text-align: center;
+        color: blue;
+    }
+    
+    li.checked {
+        text-decoration: blink;
+        background-color: #CFDB1E;
+        cursor: default;
+        color: #1A1717;
+    }
+    
+    .removelist {
+        font-size: 20px;
+        size: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 20px;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: #9C99B9;
+        text-align: center;
+    }
+    
+    .removelist:hover {
+        background-color: rgb(155, 148, 161);
+        cursor: pointer;
+    }

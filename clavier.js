@@ -46,12 +46,12 @@ function makeBoard(ligne, colone) {
                 }
 
                 if (selected() == 6) {
-                    // affiche le bouton de confirmation
+                    // active le bouton de confirmation
                     if (addButton.classList.contains("confirm")) {
                         addButton.classList.toggle("confirm")
                     }
 
-                    // cache le boutton
+                    // desactive le bouton 
                 } else if (!addButton.classList.contains("confirm")) {
                     addButton.classList.toggle("confirm")
                 }
@@ -68,7 +68,7 @@ function makeBoard(ligne, colone) {
 function confirm() {
 
 
-    // create a list out of the elements
+    // create a list out of the checked elements in the table
 
     function listOfselected(table) {
 
@@ -94,13 +94,14 @@ function confirm() {
         }
 
         var span = document.createElement("SPAN");
-        var txt = document.createTextNode("-");
+        var txt = document.createTextNode("Sup");
+        span.setAttribute("class", "removelist")
 
         span.appendChild(txt);
         span.addEventListener('click', function() {
 
             ul = this.parentNode
-            var container = document.getElementById("selectionId")
+            var container = document.getElementById("selectionListId")
             container.removeChild(ul);
 
         })
@@ -114,9 +115,36 @@ function confirm() {
 
     }
 
-    var container = document.getElementById("selectionId")
+    var container = document.getElementById("selectionListId")
     var table = document.getElementById("boardID").children[0]
-    container.appendChild(listOfselected(table))
+    var ul = listOfselected(table)
+    container.appendChild(ul)
+
+    // desactive le boutton addbutton
+    var addButton = document.getElementById("addButtonId");
+    if (!addButton.classList.contains("confirm")) {
+        addButton.classList.toggle("confirm")
+    }
+
+    //active le boutton genere
+    var genButton = document.getElementById("generateId");
+    if (genButton.classList.contains("affiche")) {
+        genButton.classList.toggle("affiche")
+    }
+
+    //active le bouton reset
+    var resetButton = document.getElementById("resetButtonId");
+
+    if (resetButton.classList.contains("affiche")) {
+        resetButton.classList.toggle("affiche")
+    }
+
+    var playButton = document.getElementById("playButtonId");
+
+    if (playButton.classList.contains("affiche")) {
+        playButton.classList.toggle("affiche")
+    }
+
 
 
 }
@@ -143,39 +171,94 @@ function removeFromList(el, list) {
 
 }
 
+function generate() {
+    function getTirage(N, excepte) {
+        var temp = 0;
+        do {
+            temp = (Math.floor(N * Math.random() + 1));
 
-function numeroGagnants(tirage) {
+        } while (excepte.indexOf(temp) >= 0);
 
-    function benefice() { return 0 }
-
-    function debit() { return true }
-    if (bedit()) {
-        var tiragesList = document.getElementById("selectListID");
-        var ul, li, numero, count = 0;
-
-        for (i = 0; i < tiragesList.childElementCount; i++) {
-            ul = tiragesList.children[i];
-            for (j = 0; j < ul.childElementCount; j++) {
-                li = ul.children[j];
-                numero = li.innerText
-                    //verifie si le chiffre existe dans  tirage 
-
-                if (tirage.indexOf(numero) != -1) {
-
-                    count = count + 1;
-                    // make the number checked in the lists
-                    li.classList.toggle("checked")
-
-
-
-
-                }
-
-
-            }
-            benefice()
-            count = 0;
-        }
+        excepte.push(temp);
+        return temp;
     }
+
+    var except = [];
+    var td, temp = 0;
+
+    var table = document.getElementById("boardID").children[0];
+    // reset the table
+    for (var i = 0; i < 7; i++) {
+        for (var j = 0; j < 7; j++) {
+
+            td = table.children[i].children[j];
+            if (td.classList.contains("checked")) {
+                td.classList.toggle("checked");
+            }
+        }
+
+
+
+
+    }
+
+    for (var i = 0; i < 6; i++) {
+
+        temp = getTirage(49, except)
+
+        var row = parseInt((temp - 1) / 7);
+        var col = temp - 1 - (7 * row);
+
+        var td = table.children[row].children[col];
+        if (!td.classList.contains("checked")) {
+            td.classList.toggle("checked");
+        }
+
+    }
+    //desactive le bouton genere
+    /* var genButton = document.getElementById("generateId");
+    if (!genButton.classList.contains("affiche")) {
+        genButton.classList.toggle("affiche")
+    } */
+    // reactive le bouton add
+    var addButton = document.getElementById("addButtonId");
+    if (addButton.classList.contains("confirm")) {
+        addButton.classList.toggle("confirm")
+    }
+}
+
+
+function play() {
+
+    bars();
+
+
+}
+
+function reset() {
+    //efface la liste des tirages
+    var tiragesList = document.getElementById("selectionListId");
+    while (tiragesList.childElementCount > 0) {
+        tiragesList.removeChild(tiragesList.children[0])
+    }
+    // deactivate the reset button
+    var resetButton = document.getElementById("resetButtonId");
+    if (!resetButton.classList.contains("affiche")) {
+        resetButton.classList.toggle("affiche")
+    }
+
+    // deactivate the reset button
+    var playButton = document.getElementById("playButtonId");
+    if (!playButton.classList.contains("affiche")) {
+        playButton.classList.toggle("affiche")
+    }
+
+
+    // effacer le canvas si pas vide
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.clearRect(0, 0, c.width, c.height);
+
 
 }
