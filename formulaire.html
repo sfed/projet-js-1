@@ -1,0 +1,118 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>649</title>
+	
+	<style>
+	body {
+	
+	}
+	
+	
+	
+	form {
+	
+	margin-left:100px;
+	padding:30px;
+	padding-left:100px;
+	padding-right:100px;
+	width:30%;
+	background-color: #dbff0021;
+	}
+	
+	fieldset {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+	width :50%;
+	layout:fixed;
+    border: none;
+	}
+	
+	#jouezId {
+	border:10px;
+	border-radius:100%;
+	padding:20px;
+	margin-left:100px;
+	margin-right:4px;
+
+	
+	 -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+	}
+	#jouezId:hover {
+	    cursor: pointer;
+	}
+	
+	/* Chrome, Safari, Opera */
+	@-webkit-keyframes mymove {
+    from {background-color:green;}
+    to {background-color: yellow;}
+	}
+
+	/* Standard syntax */
+	@keyframes mymove {
+    from {background-color: green;}
+    to {background-color: yellow;}
+	}
+	</style>
+	
+	<script>
+	function submitInfoUser() {
+		// verifie lage de la personne
+		var ddn = document.forms["info_user"].elements["Date_de_Naissance"].value
+		var name = document.forms["info_user"].elements["Nom"].value
+		var prenom = document.forms["info_user"].elements["Prenom"].value
+		
+		if (typeof(Storage) !== "undefined") {
+			// Code for localStorage/sessionStorage.
+			localStorage.setItem("nom", name);
+			localStorage.setItem("prenom", prenom);
+		}
+    
+		var today = new Date();
+		var age = new Date(ddn);
+		
+		age.setFullYear(age.getFullYear()+18)
+		
+		if ( age > today) {
+		window.alert("vous etes trop jeune pour jouez")
+		return false;
+		}else {
+			//document.getElementById("info_userId").submit();
+			return true;
+		}
+		
+	
+		
+	}
+	
+	
+</script>
+
+</head>
+<body>
+	<h1> Bienvenu au jeux 649 </h1>
+	<form action="monjeux.html" name ="info_user" Id="info_userId" onsubmit ="return submitInfoUser()">
+		<p>Name<br/>
+		<input type="text" name="Nom" id="NomId" required ></p>
+		<p>Prenom </br><input type="text" name="Prenom" id="PrenomId" required ></p>
+		<fieldset class="sexClass">
+			
+			Male  <input type="radio" name="Sex" id="maleId" required> 
+		    Female <input type="radio" name="Sex" id="femaleId" required>
+			
+		</fieldset>
+		
+		<p>Date de Naissance </br><input type="date" name="Date_de_Naissance" id="DateId" required ></p>
+		<p>Adresse Courriel </br><input type="email" name="" id="EmailId" required ></p>
+		
+		<input type="submit"  id = "jouezId" value="Jouez">
+	</form>
+	</body>
+</html>

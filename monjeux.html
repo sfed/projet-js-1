@@ -17,12 +17,8 @@
 
 
     <script>
-        /* // var expect = [12, 45, 42, 15, 6, 1];
-
-                        // function play() {
-                        //     numeroGagnants(expect);
-
-                        // } */
+        
+		
     </script>
 
 
@@ -31,8 +27,8 @@
 <body>
 
 
-    <h1> Bienvenue a notre jeux 6/49</h1>
-    <div>
+    <h1> Bonjour <span id="name"></span> </h1>
+    <div class="ecran1">
         <div id="boardID">
 
         </div>
@@ -43,26 +39,39 @@
 
 
     </div>
-    <div>
+    <div class="ecran2">
         <canvas id="myCanvas" width="250" height="250" style="border:1px solid #d3d3d3;">
                 Your browser does not support the HTML5 canvas tag.</canvas>
 
     </div>
 
 
-    <div>
+    <div class="ecran3">
         <div id="selectionListId">
 
 
-        </div>
-
+        </div >
+		<p> Cout Total de vos selection <input type="number" id = "totSelection" value ="0"> $</p>
         <button id="playButtonId" class="affiche" onclick="play()"> Jouez </button>
         <button id="resetButtonId" class="affiche" onclick="reset()"> Reset </button>
 
 
     </div>
+	<div class="ecran4">
+	
+		<p>
+			
+			
+			<p>Votre solde est <input type="number" id="soldeInput" value = "100" min="10" max="100"></p> <br>
+			
+			chaque tirage vous coute 10$ <br/>
+
+		</p>
+	</div>
 
     <script>
+	    document.getElementById("name").innerHTML = localStorage.getItem("prenom");				
+	
         var board = makeBoard(7, 7)
         document.getElementById("boardID").appendChild(board)
     </script>

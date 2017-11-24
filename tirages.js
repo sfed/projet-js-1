@@ -1,36 +1,49 @@
 function numerosGagnant(tirage) {
     var total = 0;
-
+    var temp =0;
     function calculeProfit(combine) {
 
         for (var i = 0; i < combine.length; i++) {
-
-            total = total + combine[i]
+			temp =0;
+			switch (combine[i]){
+				
+				case 3:
+				temp =10;
+				break;
+				case 4:
+				temp =85
+				break;
+				case 5:
+				temp =2450
+				break;
+				case 6:
+				temp =2050000
+				break;
+				
+			}
+		   total = total + temp;
 
 
         }
+		return total;
     }
 
-    function debit() {
-
-        return true
-
-    }
+    
 
 
-    if (debit()) {
+    
         var tiragesList = document.getElementById("selectionListId");
         var ul, li, numero;
         var comb = [];
 
-        // remove selection from all numbers of the list
+        // remove the selection ul elements if exist from previous run
         for (i = 0; i < tiragesList.childElementCount; i++) {
             ul = tiragesList.children[i];
 
-            // verifie les numeros qui figure dans le tirage
-            for (j = 0; j < ul.childElementCount; j++) {
+           
+            for (j = 0; j < ul.childElementCount-1; j++) {
                 li = ul.children[j];
-                numero = parseInt(li.innerText)
+              
                 if (li.classList.contains("checked")) {
                     li.classList.toggle("checked");
                 }
@@ -39,11 +52,11 @@ function numerosGagnant(tirage) {
 
         }
 
-        for (i = 0; i < tiragesList.childElementCount; i++) {
+        for (i = 0; i < tiragesList.childElementCount ; i++) {
             ul = tiragesList.children[i];
             var count = 0
                 // verifie les numeros qui figure dans le tirage
-            for (j = 0; j < ul.childElementCount; j++) {
+            for (j = 0; j < ul.childElementCount-1; j++) {
                 li = ul.children[j];
                 numero = parseInt(li.innerText)
 
@@ -64,8 +77,8 @@ function numerosGagnant(tirage) {
 
         }
 
-        calculeProfit(comb)
-    }
+       return  calculeProfit(comb);
+    
 
 }
 
@@ -73,7 +86,9 @@ function numerosGagnant(tirage) {
 
 
 function bars() {
-
+	
+	
+	
     function getTirage(N, except) {
         var temp = 0;
         do {
@@ -107,7 +122,7 @@ function bars() {
 
     }
 
-    var except = [];
+    var except = [] , profit =0;
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
 
@@ -125,14 +140,18 @@ function bars() {
 
             j = j + 1;
             x = 250;
-            t = h = getTirage(49, except);
+			//pour les tests
+            t = h = getTirage(9, except);
             bar(a, x, t, h);
 
 
             a = a + 40;
         } else {
             clearInterval(id);
-            numerosGagnant(except)
+            profit = numerosGagnant(except)
+			var temp = document.getElementById("soldeInput").value
+			document.getElementById("soldeInput").value = parseInt(temp)+profit
+			
         }
     }, 500);
 
